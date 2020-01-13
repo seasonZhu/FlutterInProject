@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
+import 'package:flutter/cupertino.dart';
 
-void main() => runApp(MyApp());
+import 'app.dart';
+
+void main() {
+  // This app is designed only to work vertically, so we limit
+  // orientations to portrait up and down.
+  //SystemChrome.setPreferredOrientations(
+      //[DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+  return runApp(CupertinoStoreApp());
+}
+
+//void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
