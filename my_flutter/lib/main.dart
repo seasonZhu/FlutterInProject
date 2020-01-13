@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart'; 
 
 import 'app.dart';
+import 'model/app_state_model.dart';          
 
 void main() {
   // This app is designed only to work vertically, so we limit
@@ -11,7 +13,12 @@ void main() {
   //SystemChrome.setPreferredOrientations(
       //[DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-  return runApp(CupertinoStoreApp());
+  return runApp(
+    ChangeNotifierProvider<AppStateModel>(
+      builder: (context) => AppStateModel()..loadProducts(),
+      child: CupertinoStoreApp(),
+    ),
+  );
 }
 
 //void main() => runApp(MyApp());
