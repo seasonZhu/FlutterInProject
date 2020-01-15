@@ -4,6 +4,7 @@ import 'styles.dart';
 import 'product_list_tab.dart';   
 import 'search_tab.dart';         
 import 'shopping_cart_tab.dart'; 
+import 'swicherView.dart';
 
 class CupertinoStoreApp extends StatelessWidget {
   @override
@@ -32,6 +33,10 @@ class CupertinoStoreHomePage extends StatelessWidget {
             icon: Icon(CupertinoIcons.shopping_cart),
             title: Text('Cart'),
           ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.down_arrow),
+            title: Text('Switch'),
+          ),
         ],
       ),
       tabBuilder: (context, index) {
@@ -53,6 +58,10 @@ class CupertinoStoreHomePage extends StatelessWidget {
               return CupertinoPageScaffold(
                 child: ShoppingCartTab(),
               );
+            });
+          case 3:
+            return CupertinoTabView(builder: (context) {
+              return CupertinoSwitchDemo();
             });
         }
       },

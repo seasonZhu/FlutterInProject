@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+//import 'package:gallery/l10n/gallery_localizations.dart'; 这个是用来国际化的包,但是现在我不知道如何使用
 
 class CupertinoSwitchDemo extends StatefulWidget {
   @override
@@ -17,14 +18,19 @@ class _CupertinoSwitchDemoState extends State<CupertinoSwitchDemo> {
           ),
       ),
       child: Center(
-        child: CupertinoSwitch(
-          value: _switchValue, 
-          onChanged: (value) {
-            setState(() {
-              _switchValue = value;
-            });
-          },
-        ),
+        child: Semantics(
+          container: true,
+          label: "哈哈",
+          child: CupertinoSwitch(
+            value: _switchValue, 
+            onChanged: (value) {
+              setState(() {
+                _switchValue = value;
+                print(value);
+              });
+            },
+          ),
+        )
       ),
     );
   }

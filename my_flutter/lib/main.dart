@@ -20,7 +20,6 @@ void main() {
       child: CupertinoStoreApp(),
     ),
   );
-  //eturn runApp(CupertinoSwitchDemo());
 }
 
 //void main() => runApp(MyApp());
