@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
-//import 'package:gallery/l10n/gallery_localizations.dart'; 这个是用来国际化的包,但是现在我不知道如何使用
+import 'package:flutter/material.dart';
 
+import 'NextPageWidget.dart';
+//import 'package:gallery/l10n/gallery_localizations.dart'; 这个是用来国际化的包,但是现在我不知道如何使用
 class CupertinoSwitchDemo extends StatefulWidget {
   @override
   _CupertinoSwitchDemoState createState() => _CupertinoSwitchDemoState();
@@ -15,6 +17,20 @@ class _CupertinoSwitchDemoState extends State<CupertinoSwitchDemo> {
       navigationBar: CupertinoNavigationBar(
         middle: Text(
           "Switch"
+          ),
+        trailing: CupertinoButton(
+            child: Icon(
+              Icons.navigate_next, 
+              color: Colors.white),
+            onPressed: () {
+              Navigator.push(
+                context, 
+                CupertinoPageRoute(
+                  //fullscreenDialog: true, //加上这句是present, 不加这句是push
+                  builder: (context) => CupertinoNextPageWidget(),
+                ),
+              );
+            },
           ),
       ),
       child: Center(
