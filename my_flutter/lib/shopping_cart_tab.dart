@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -161,6 +162,11 @@ class _ShoppingCartTabState extends State<ShoppingCartTab> {
             return Padding(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
               child: _buildDateAndTimePicker(context),
+            );
+          case 4:
+            return Padding(
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
+              child: FlutterLogo(size: 100,colors: Colors.blue,),
             );
           default:
           // Do nothing. For now.

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class SearchTab extends StatefulWidget {
   @override
@@ -13,7 +14,9 @@ class _SearchTabState extends State<SearchTab> {
     return CustomScrollView(
       slivers: const <Widget>[
         CupertinoSliverNavigationBar(
-          largeTitle: Text('Search'),
+          largeTitle: Text(
+            'Search'
+          ),
         ),
       ],
     );

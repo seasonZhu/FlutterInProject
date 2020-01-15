@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart'; 
 
 import 'app.dart';
-import 'swicherView.dart';
 import 'model/app_state_model.dart';          
 
 void main() {
