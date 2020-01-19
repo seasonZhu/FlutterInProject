@@ -7,23 +7,26 @@ import 'package:provider/provider.dart';
 
 import 'NextPageWidget.dart';
 import 'app.dart';
-import 'model/app_state_model.dart';          
+import 'model/app_state_model.dart';  
+import 'ScaffoldRoute.dart';        
 
-void main() {
-  // This app is designed only to work vertically, so we limit
-  // orientations to portrait up and down.
-  //SystemChrome.setPreferredOrientations(
-      //[DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+// void main() {
+//   // This app is designed only to work vertically, so we limit
+//   // orientations to portrait up and down.
+//   //SystemChrome.setPreferredOrientations(
+//       //[DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-  return runApp(
-    ChangeNotifierProvider<AppStateModel>(
-      builder: (context) => AppStateModel()..loadProducts(),
-      child: CupertinoStoreApp(),
-    ),
-  );
-}
+//   return runApp(
+//     ChangeNotifierProvider<AppStateModel>(
+//       builder: (context) => AppStateModel()..loadProducts(),
+//       child: CupertinoStoreApp(),
+//     ),
+//   );
+// }
 
 //void main() => runApp(MyApp());
+
+void main() => runApp(AndroidApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

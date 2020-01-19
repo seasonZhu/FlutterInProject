@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import 'model/app_state_model.dart';
 import 'styles.dart';
+import 'MeterialSwitchView.dart';
 
 const double _kDateTimePickerHeight = 216;
 
@@ -167,6 +168,14 @@ class _ShoppingCartTabState extends State<ShoppingCartTab> {
             return Padding(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
               child: FlutterLogo(size: 100,colors: Colors.blue,),
+            );
+          case 5:
+            return Padding(
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
+              child: Column(children: <Widget>[
+                Image(image: AssetImage("images/avatar.jpg"),width: 100.0),
+                SwitchAndCheckBoxView()
+              ],)
             );
           default:
           // Do nothing. For now.
