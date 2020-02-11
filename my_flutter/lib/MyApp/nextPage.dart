@@ -6,12 +6,12 @@ class NextPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "第二页"
+          "Next Page"
         ),
       ), 
       body: Center(
         child: Text(
-          "material当前是第二页"
+          "material Next Page"
           ),
         ),
     );

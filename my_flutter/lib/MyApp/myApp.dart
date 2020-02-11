@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 
 import 'package:my_flutter/CupertinoStoreApp/app.dart';
+import 'package:my_flutter/Study/DemoWidget.dart';
 import 'nextPage.dart';
 import 'cupertinoNextPage.dart';
 
@@ -52,23 +53,6 @@ class _MyHomePageState extends State<MyHomePage> {
   static const platform = const MethodChannel('dev.flutter.example/counter');
 
   String buttonTitle = 'You have pushed the button this many times:';
-
-  // 可以进行将flutter中的值传递给原生界面的操作
-  Future<void> incrementCounter() async {
-    print("点击了加好按钮");
-    setState(() {
-      _counter++;
-    });
-
-    try {
-
-      final int result = await platform.invokeMethod('incrementCounter');
-      print(result);
-    } 
-    on PlatformException catch (e) {
-      print(e);
-    }
-  }
   
   // 一个单纯的flutter中的按钮点击事件
   void _incrementCounter() {
@@ -185,6 +169,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // 纯material组件
   Widget materialNextPage() {
+    return DemoWidget();
     return NextPage();
   }
 
@@ -220,5 +205,22 @@ class _MyHomePageState extends State<MyHomePage> {
   void dispose() {
     super.dispose();
     print("dispose");
+  }
+
+    // 可以进行将flutter中的值传递给原生界面的操作
+  Future<void> incrementCounter() async {
+    print("点击了加好按钮");
+    setState(() {
+      _counter++;
+    });
+
+    try {
+
+      final int result = await platform.invokeMethod('incrementCounter');
+      print(result);
+    } 
+    on PlatformException catch (e) {
+      print(e);
+    }
   }
 }
