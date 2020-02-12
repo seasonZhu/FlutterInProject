@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
 
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+
 import 'package:my_flutter/CupertinoStoreApp/app.dart';
 
 import 'nextPage.dart';
@@ -53,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static const platform = const MethodChannel('dev.flutter.example/counter');
 
   String buttonTitle = 'You have pushed the button this many times:';
-  
+
   // 一个单纯的flutter中的按钮点击事件
   void _incrementCounter() {
     setState(() {
@@ -81,12 +83,10 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
         actions: <Widget>[
           IconButton(
-            icon: Icon(
-              Icons.navigate_next, 
-              color: Colors.white),
+            icon: Icon(Icons.navigate_next, color: Colors.white),
             onPressed: () {
               Navigator.push(
-                context, 
+                context,
                 MaterialPageRoute(
                   //fullscreenDialog: true, 加上这句是present, 不加这句是push
                   builder: (context) => materialOfCupertinoNextPage(),
@@ -95,12 +95,10 @@ class _MyHomePageState extends State<MyHomePage> {
             },
           ),
           IconButton(
-            icon: Icon(
-              Icons.control_point_duplicate, 
-              color: Colors.white),
+            icon: Icon(Icons.control_point_duplicate, color: Colors.white),
             onPressed: () {
               Navigator.push(
-                context, 
+                context,
                 MaterialPageRoute(
                   //fullscreenDialog: true, //加上这句是present, 不加这句是push
                   builder: (context) => materialNextPage(),
@@ -137,20 +135,31 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
-            IconButton(
-            icon: Icon(
-              Icons.note_add, 
-              color: Colors.blue),
-            onPressed: () {
-              Navigator.push(
-                context, 
-                MaterialPageRoute(
-                  //fullscreenDialog: true, //加上这句是present, 不加这句是push
-                  builder: (context) => storeApp(),
-                ),
-              );
-            },
-          )
+            RaisedButton(
+              child: Text("Go to CupertinoStoreApp"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    //fullscreenDialog: true, //加上这句是present, 不加这句是push
+                    builder: (context) => storeApp(),
+                  ),
+                );
+              },
+            ),
+            FlatButton(
+              child: Text("Date Pike"),
+              onPressed: () {
+                 DatePicker.showDatePicker(context,
+                              showTitleActions: true,
+                              minTime: DateTime.now(),
+                              maxTime: DateTime(2100, 12, 31), onChanged: (date) {
+                            print('change $date');
+                          }, onConfirm: (date) {
+                            print('confirm $date');
+                          }, currentTime: DateTime.now(), locale: LocaleType.zh);
+              },
+            ),
           ],
         ),
       ),
@@ -161,10 +170,12 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
-  
+
   // 将一个cupertino组件封装到material框架中
   Widget materialOfCupertinoNextPage() {
-    return Material(child: CupertinoNextPage(),);
+    return Material(
+      child: CupertinoNextPage(),
+    );
   }
 
   // 纯material组件
@@ -206,7 +217,7 @@ class _MyHomePageState extends State<MyHomePage> {
     print("dispose");
   }
 
-    // 可以进行将flutter中的值传递给原生界面的操作
+  // 可以进行将flutter中的值传递给原生界面的操作
   Future<void> incrementCounter() async {
     print("点击了加好按钮");
     setState(() {
@@ -214,11 +225,9 @@ class _MyHomePageState extends State<MyHomePage> {
     });
 
     try {
-
       final int result = await platform.invokeMethod('incrementCounter');
       print(result);
-    } 
-    on PlatformException catch (e) {
+    } on PlatformException catch (e) {
       print(e);
     }
   }
