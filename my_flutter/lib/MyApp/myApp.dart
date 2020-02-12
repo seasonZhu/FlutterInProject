@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 
 import 'package:my_flutter/CupertinoStoreApp/app.dart';
-import 'package:my_flutter/Study/DemoWidget.dart';
+
 import 'nextPage.dart';
 import 'cupertinoNextPage.dart';
 
@@ -169,7 +169,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // 纯material组件
   Widget materialNextPage() {
-    return DemoWidget();
     return NextPage();
   }
 
