@@ -88,18 +88,6 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  //fullscreenDialog: true, 加上这句是present, 不加这句是push
-                  builder: (context) => materialOfCupertinoNextPage(),
-                ),
-              );
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.control_point_duplicate, color: Colors.white),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
                   //fullscreenDialog: true, //加上这句是present, 不加这句是push
                   builder: (context) => materialNextPage(),
                 ),
@@ -135,6 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
+            Divider(height: 1,),
             RaisedButton(
               child: Text("Go to CupertinoStoreApp"),
               onPressed: () {
@@ -147,17 +136,30 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
             ),
+            RaisedButton(
+              child: Text("Go to CupertinoNextPage"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    //fullscreenDialog: true, 加上这句是present, 不加这句是push
+                    builder: (context) => materialOfCupertinoNextPage(),
+                  ),
+                );
+              },
+            ),
+            Divider(height: 1,),
             FlatButton(
               child: Text("Date Pike"),
               onPressed: () {
-                 DatePicker.showDatePicker(context,
-                              showTitleActions: true,
-                              minTime: DateTime.now(),
-                              maxTime: DateTime(2100, 12, 31), onChanged: (date) {
-                            print('change $date');
-                          }, onConfirm: (date) {
-                            print('confirm $date');
-                          }, currentTime: DateTime.now(), locale: LocaleType.zh);
+                DatePicker.showDatePicker(context,
+                    showTitleActions: true,
+                    minTime: DateTime.now(),
+                    maxTime: DateTime(2100, 12, 31), onChanged: (date) {
+                  print('change $date');
+                }, onConfirm: (date) {
+                  print('confirm $date');
+                }, currentTime: DateTime.now(), locale: LocaleType.zh);
               },
             ),
           ],
@@ -167,12 +169,14 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+      //floatingActionButtonLocation: FloatingActionButtonLocation.endFloat, // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
   // 将一个cupertino组件封装到material框架中
   Widget materialOfCupertinoNextPage() {
+    //return CupertinoNextPage();
     return Material(
       child: CupertinoNextPage(),
     );
