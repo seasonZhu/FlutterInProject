@@ -8,6 +8,7 @@ import 'package:my_flutter/CupertinoStoreApp/app.dart';
 
 import 'nextPage.dart';
 import 'cupertinoNextPage.dart';
+import 'gesturedetectorPage.dart';
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -148,6 +149,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
             ),
+            RaisedButton(
+              child: Text("Go to GesturedetectorPage"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    //fullscreenDialog: true, 加上这句是present, 不加这句是push
+                    builder: (context) => gesturedetectorPage(),
+                  ),
+                );
+              },
+            ),
             Divider(height: 1,),
             FlatButton(
               child: Text("Date Pike"),
@@ -179,6 +192,12 @@ class _MyHomePageState extends State<MyHomePage> {
     //return CupertinoNextPage();
     return Material(
       child: CupertinoNextPage(),
+    );
+  }
+
+  Widget gesturedetectorPage() {
+    return Material(
+      child: GestureDetectorTestRoute(),
     );
   }
 
