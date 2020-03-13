@@ -23,6 +23,7 @@ class _ListSamplePageState extends State<ListSamplePage> {
 
   @override
   Widget build(BuildContext context) {
+    //return getScaffold();
     return Scaffold(
       appBar: AppBar(
         title: Text("Sample App"),
@@ -57,6 +58,43 @@ class _ListSamplePageState extends State<ListSamplePage> {
           print('row $i');
         });
       },
+    );
+  }
+
+  Widget getScaffold() {
+     return Scaffold(
+      appBar: AppBar(
+        title: Text("Sample App"),
+      ),
+      body: getListenListView(),
+    );
+  }
+/* 这个例子是用来展示监听的 */
+  Widget getListenListView() {
+    return NotificationListener(
+      onNotification: (notification) {
+        switch (notification.runtimeType) {
+          case ScrollStartNotification:
+            print("开始滚动");
+            break;
+          case ScrollUpdateNotification:
+            print("正在滚动");
+            break;
+          case ScrollEndNotification:
+            print("滚动停止");
+            break;
+          case OverscrollNotification:
+            print("滚动到边界");
+            break;
+        }
+      },
+      child: ListView.builder(
+          itemCount: 100,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text("$index"),
+            );
+          }),
     );
   }
 }
