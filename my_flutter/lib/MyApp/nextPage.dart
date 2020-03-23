@@ -70,7 +70,8 @@ class _NextPageState extends State<NextPage>
                 child: Column(
                   children: <Widget>[
                     Text(e, textScaleFactor: 5),
-                    Text(_sum.toString(), textScaleFactor: 5)
+                    Text(_sum.toString(), textScaleFactor: 5),
+                    getColumn(),
                   ],
                 ));
           }).toList()),

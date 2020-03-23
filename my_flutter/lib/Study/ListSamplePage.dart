@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 // 格式化当前窗口中代码的方法是先在代码窗口中单击右键，然后选择 Format Document 选项即可。
 // 也可以在 VS Code 的偏好设置里面增加快捷键，然后使用快捷键操作。
@@ -26,7 +27,7 @@ class _ListSamplePageState extends State<ListSamplePage> {
     //return getScaffold();
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sample App"),
+        title: Text("TableView"),
       ),
       body: ListView.builder(
         itemCount: widgets.length,
@@ -48,9 +49,40 @@ class _ListSamplePageState extends State<ListSamplePage> {
 
   Widget getRow(int i) {
     return GestureDetector(
-      child: Padding(
-        padding: EdgeInsets.all(10.0),
-        child: Text("Row $i"),
+      child: Column(
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(top: 5, bottom: 5, left: 15),
+                child: Image.asset(
+                  "images/avatar.jpg",
+                  width: 80,
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Container(
+                constraints: BoxConstraints(
+                  minWidth: 200,
+                  maxWidth: 200,
+                ),
+                child: Padding(
+                    padding: EdgeInsets.all(0.0),
+                    child: Text("Row $i It's just test")),
+              ),
+              SizedBox(
+                width: 15,
+              ),
+              Icon(Icons.navigate_next, color: Colors.grey),
+            ],
+          ),
+          const Divider(
+            height: 1,
+            indent: 15,
+          )
+        ],
       ),
       onTap: () {
         setState(() {
@@ -62,13 +94,14 @@ class _ListSamplePageState extends State<ListSamplePage> {
   }
 
   Widget getScaffold() {
-     return Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: Text("Sample App"),
       ),
       body: getListenListView(),
     );
   }
+
 /* 这个例子是用来展示监听的 */
   Widget getListenListView() {
     return NotificationListener(
