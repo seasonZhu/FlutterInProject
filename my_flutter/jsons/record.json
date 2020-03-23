@@ -1,0 +1,9 @@
+{
+    "eachSOC": "20.0",
+    "startSOC": "30.0",
+    "endSOC": "60.0",
+    "startDay": "yyyy年MM月dd日",
+    "startTime": "HH: mm: ss",
+    "endTime": "HH: mm: ss",
+    "duration": "180"
+}
