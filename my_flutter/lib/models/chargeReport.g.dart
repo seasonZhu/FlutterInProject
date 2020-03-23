@@ -10,7 +10,9 @@ ChargeReport _$ChargeReportFromJson(Map<String, dynamic> json) {
   return ChargeReport()
     ..code = json['code'] as String
     ..msg = json['msg'] as String
-    ..data = json['data'] as Map<String, dynamic>;
+    ..data = json['data'] == null
+        ? null
+        : ChargeReportData.fromJson(json['data'] as Map<String, dynamic>);
 }
 
 Map<String, dynamic> _$ChargeReportToJson(ChargeReport instance) =>

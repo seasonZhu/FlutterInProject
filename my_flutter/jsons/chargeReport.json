@@ -1,14 +1,5 @@
 {
     "code": "200",
     "msg": "SUCCESS",
-    "data": {
-      "totalDuration": "231.123",
-      "totalSOC": "50.0",
-      "totalCount": "2",
-      "baseY": "10",
-      "positionY": "40",
-      "record": "$[]record",
-      "avgSOC": "25.0",
-      "avgDuration": "115.5615"
-    }
+    "data": "$chargeReportData"
   }
