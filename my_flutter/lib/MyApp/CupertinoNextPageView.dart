@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 import 'controlView.dart';
 
-class CupertinoNextPage extends StatefulWidget {
+class CupertinoNextPageView extends StatefulWidget {
   @override
-  _CupertinoNextPageState createState() => _CupertinoNextPageState();
+  _CupertinoNextPageViewState createState() => _CupertinoNextPageViewState();
 }
 
-class _CupertinoNextPageState extends State<CupertinoNextPage> {
+class _CupertinoNextPageViewState extends State<CupertinoNextPageView> {
   var _switchSelected = false;
 
   @override

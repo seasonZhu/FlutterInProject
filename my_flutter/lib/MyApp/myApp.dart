@@ -6,9 +6,9 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 import 'package:my_flutter/CupertinoStoreApp/app.dart';
 
-import 'nextPage.dart';
-import 'cupertinoNextPage.dart';
-import 'gesturedetectorPage.dart';
+import 'NextPageView.dart';
+import 'CupertinoNextPageView.dart';
+import 'GestureDetectorTestRoute.dart';
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 context,
                 MaterialPageRoute(
                   //fullscreenDialog: true, //加上这句是present, 不加这句是push
-                  builder: (context) => materialNextPage(),
+                  builder: (context) => materialNextPageView(),
                 ),
               );
             },
@@ -116,6 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
               buttonTitle,
@@ -138,13 +139,13 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             RaisedButton(
-              child: Text("Go to CupertinoNextPage"),
+              child: Text("Go to CupertinoNextPageView"),
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     //fullscreenDialog: true, 加上这句是present, 不加这句是push
-                    builder: (context) => materialOfCupertinoNextPage(),
+                    builder: (context) => materialOfCupertinoNextPageView(),
                   ),
                 );
               },
@@ -188,10 +189,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   // 将一个cupertino组件封装到material框架中
-  Widget materialOfCupertinoNextPage() {
-    //return CupertinoNextPage();
+  Widget materialOfCupertinoNextPageView() {
+    //return CupertinoNextPageView();
     return Material(
-      child: CupertinoNextPage(),
+      child: CupertinoNextPageView(),
     );
   }
 
@@ -202,8 +203,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   // 纯material组件
-  Widget materialNextPage() {
-    return NextPage();
+  Widget materialNextPageView() {
+    return NextPageView();
   }
 
   Widget storeApp() {

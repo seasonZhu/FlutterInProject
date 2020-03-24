@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 
 class ControlView extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _ControlView();
+  State<StatefulWidget> createState() => _ControlViewState();
 }
 
-class _ControlView extends State<ControlView> {
+class _ControlViewState extends State<ControlView> {
   bool _switchSelected = true;
   bool _checkboxSelected = true;
   String _inputString = "";
@@ -30,11 +30,17 @@ class _ControlView extends State<ControlView> {
             },
           ),
           // 下面的代码直接跑着直接就跪了
-          // Checkbox(value: _checkboxSelected, activeColor: Colors.red, onChanged: (value) {
-          //   setState(() {
-          //     _checkboxSelected = value;
-          //   });
-          // },),
+          Material(
+            child: Checkbox(
+              value: _checkboxSelected,
+              activeColor: Colors.red,
+              onChanged: (value) {
+                setState(() {
+                  _checkboxSelected = value;
+                });
+              },
+            ),
+          ),
           RaisedButton(
             onPressed: () {
               print("点击了按钮");
@@ -48,6 +54,7 @@ class _ControlView extends State<ControlView> {
               keyboardType: TextInputType.emailAddress,
               onChanged: (value) {
                 _inputString = value;
+                print(_inputString);
               },
             ),
           ),

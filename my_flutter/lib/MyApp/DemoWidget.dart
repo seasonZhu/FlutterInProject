@@ -148,6 +148,7 @@ class _DemoStateWidgetState extends State<DemoStateWidget> {
 
   @override
   void initState() {
+    super.initState();
     ///初始化，这个函数在生命周期中只调用一次 super.initState();
     ///定时1秒
     Future.delayed(const Duration(seconds: 1), () {

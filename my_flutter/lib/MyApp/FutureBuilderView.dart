@@ -88,8 +88,6 @@ class _FutureBuilderViewState extends State<FutureBuilderView> {
   Future<ChargeReport> getChargeReport() async {
     Response response = await _dio.get(chargeReportApi);
     //data类型是Map<String, dynamic>
-    var data = response.data;
-    var model = ChargeReport.fromJson(data);
     return ChargeReport.fromJson(response.data);
   }
 }

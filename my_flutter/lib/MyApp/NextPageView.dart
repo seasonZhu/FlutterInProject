@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import 'package:my_flutter/Study/DemoWidget.dart';
-import 'package:my_flutter/MyApp/progressRoute.dart';
+import 'DemoWidget.dart';
+import 'ProgressView.dart';
 
-class NextPage extends StatefulWidget {
+class NextPageView extends StatefulWidget {
   @override
-  _NextPageState createState() => _NextPageState();
+  _NextPageViewState createState() => _NextPageViewState();
 }
 
-class _NextPageState extends State<NextPage>
+class _NextPageViewState extends State<NextPageView>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
 
