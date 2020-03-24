@@ -20,9 +20,10 @@ class _FutureBuilderViewState extends State<FutureBuilderView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("网络请求的list"),
+          title: Text("网络请求的List"),
         ),
-        body: getContainer());
+        body: getContainer(),
+      );
   }
 
   Container getContainer() {
@@ -39,6 +40,7 @@ class _FutureBuilderViewState extends State<FutureBuilderView> {
                 return Text(snapshot.error.toString());
               }
               //请求成功，通过项目信息构建用于显示项目名称的ListView
+              //return getSectionIndexListView(model);
               return getSectionHeaderListView(model);
               return getAnotherListView(model);
               return ListView.builder(
@@ -73,9 +75,20 @@ class _FutureBuilderViewState extends State<FutureBuilderView> {
     );
   }
 
+  Widget getSectionIndexListView(ChargeReport model) {
+    return Flex(direction: Axis.vertical, children: <Widget>[
+      ListView(
+      children: model.data.record
+          .map<Widget>((r) => getSectionHeaderListView(model))
+          .toList(),
+    ),
+    ],);
+  }
+
   Future<ChargeReport> getChargeReport() async {
     Response response = await _dio.get(chargeReportApi);
-    Map<String, dynamic> data = response.data;
+    //data类型是Map<String, dynamic>
+    var data = response.data;
     var model = ChargeReport.fromJson(data);
     return ChargeReport.fromJson(response.data);
   }
