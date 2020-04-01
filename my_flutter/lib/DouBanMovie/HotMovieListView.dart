@@ -77,6 +77,9 @@ class _HotMoviesListViewState extends State<HotMoviesListView> {
     );
   }
 
+  /*
+  给函数加上 async关键字，使函数变为异步函数，await 关键字只能在异步函数里用。 
+  */
   Future<DoubanData> getDoubanData() async {
     Response response = await _dio.get(douBanDataApi);
     //data类型是Map<String, dynamic>
