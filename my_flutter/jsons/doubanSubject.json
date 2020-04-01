@@ -1,0 +1,18 @@
+{
+    "rating": "$doubanRating",
+    "genres": "$[]String",
+    "title": "\u6211\u4e3a\u4f60\u727a\u7272",
+    "casts": "$[]doubanPersonInfo",
+    "durations": "$[]String",
+    "collect_count": 484,
+    "mainland_pubdate": "2019-12-05",
+    "has_video": true,
+    "original_title": "\u6211\u4e3a\u4f60\u727a\u7272",
+    "subtype": "movie",
+    "directors": "$[]doubanPersonInfo",
+    "pubdates": "$[]String",
+    "year": "2019",
+    "images": "$doubanImageInfo",
+    "alt": "https:\/\/movie.douban.com\/subject\/34429008\/",
+    "id": "34429008"
+}

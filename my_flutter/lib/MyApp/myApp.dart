@@ -9,6 +9,7 @@ import 'package:my_flutter/CupertinoStoreApp/app.dart';
 import 'NextPageView.dart';
 import 'CupertinoNextPageView.dart';
 import 'GestureDetectorTestRoute.dart';
+import 'MyCustomScrollView.dart';
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -158,6 +159,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   MaterialPageRoute(
                     //fullscreenDialog: true, 加上这句是present, 不加这句是push
                     builder: (context) => gesturedetectorPage(),
+                  ),
+                );
+              },
+            ),
+            RaisedButton(
+              child: Text("Go to MyCustomScrollView"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    //fullscreenDialog: true, 加上这句是present, 不加这句是push
+                    builder: (context) => MyCustomScrollView(),
                   ),
                 );
               },

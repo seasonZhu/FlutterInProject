@@ -1,4 +1,10 @@
+export 'doubanDetails.dart' ; 
+export 'doubanRating.dart' ; 
 export 'record.dart' ; 
+export 'doubanSubject.dart' ; 
 export 'example.dart' ; 
 export 'chargeReport.dart' ; 
+export 'doubanImageInfo.dart' ; 
 export 'chargeReportData.dart' ; 
+export 'doubanPersonInfo.dart' ; 
+export 'doubanData.dart' ; 
