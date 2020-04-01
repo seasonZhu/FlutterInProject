@@ -6,5 +6,6 @@ export 'example.dart' ;
 export 'chargeReport.dart' ; 
 export 'doubanImageInfo.dart' ; 
 export 'chargeReportData.dart' ; 
+export 'doubanOriginData.dart' ; 
 export 'doubanPersonInfo.dart' ; 
 export 'doubanData.dart' ; 
