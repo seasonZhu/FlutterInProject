@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'HotMovieData.dart';
 import 'package:my_flutter/models/doubanSubject.dart';
@@ -13,7 +14,16 @@ class HotMovieCell extends StatefulWidget {
   _HotMovieCellState createState() => _HotMovieCellState();
 }
 
-class _HotMovieCellState extends State<HotMovieCell> with AutomaticKeepAliveClientMixin {
+class _HotMovieCellState extends State<HotMovieCell>
+    with AutomaticKeepAliveClientMixin {
+  
+  // 方法通道
+  static const methodChannel = const MethodChannel('flutter.doubanmovie/buy');
+
+  // 购买按钮的文字
+  var _buyButtonTitle = "购票";
+
+  var _buyState = false;
 
   @override
   bool get wantKeepAlive => true; //返回 true，表示不会被回收
@@ -61,16 +71,23 @@ class _HotMovieCellState extends State<HotMovieCell> with AutomaticKeepAliveClie
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(widget.subject.collect_count.toString()+'人看过',style: TextStyle(color: Colors.red,fontSize: 14),),
+                Text(
+                  widget.subject.collect_count.toString() + '人看过',
+                  style: TextStyle(color: Colors.red, fontSize: 14),
+                ),
                 OutlineButton(
-                  child: Text('购票',style: TextStyle(fontSize: 16),),
+                  child: Text(
+                    _buyButtonTitle,
+                    style: TextStyle(fontSize: 16),
+                  ),
                   color: Colors.red,
                   textColor: Colors.red,
                   highlightedBorderColor: Colors.red,
-                  borderSide: BorderSide(
-                    color: Colors.red
-                  ),
-                  onPressed: () {},
+                  borderSide: BorderSide(color: Colors.red),
+                  onPressed: () {
+                    if (_buyState) return;
+                    _flutterCallbackSwiftMethod();
+                  },
                 )
               ],
             ),
@@ -82,5 +99,25 @@ class _HotMovieCellState extends State<HotMovieCell> with AutomaticKeepAliveClie
 
   String getCasts(List<DoubanPersonInfo> casts) {
     return casts.map((info) => info.name).join("/");
+  }
+
+  // 目前这个方法仅在使用大工程FlutterInProject的时候才能正确调用,在my_flutter调用直接就是找不到方法
+  Future<void> _flutterCallbackSwiftMethod() async {
+    try {
+      // 约定好返回参数的类型,便于进行交互
+      var result = await methodChannel.invokeMethod(
+                        'buyTicket', '购买 ' + widget.subject.title + ' 电影票一张');
+      final bool message = result as bool;
+
+      setState(() {
+          _buyButtonTitle = message ? "已购" : "买一张嘛";
+        });
+
+      setState(() {
+        _buyState = message;
+      });
+    } on PlatformException catch (e) {//抛出异常
+      print(e);
+    }
   }
 }
