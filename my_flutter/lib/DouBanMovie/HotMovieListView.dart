@@ -7,6 +7,10 @@ import 'HotMovieCell.dart';
 import 'package:my_flutter/models/doubanData.dart';
 
 class HotMoviesListView extends StatefulWidget {
+  final String currentCity;
+
+  HotMoviesListView(this.currentCity);
+
   @override
   _HotMoviesListViewState createState() => _HotMoviesListViewState();
 }
@@ -16,8 +20,7 @@ class _HotMoviesListViewState extends State<HotMoviesListView> {
 
   Dio _dio = Dio();
 
-  final String douBanDataApi =
-      "https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E6%B7%B1%E5%9C%B3&start=0&count=10";
+  String douBanDataApi;
 
   @override
   void initState() {
@@ -37,6 +40,8 @@ class _HotMoviesListViewState extends State<HotMoviesListView> {
 
   @override
   Widget build(BuildContext context) {
+    douBanDataApi =
+      "https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=${widget.currentCity}&start=0&count=10";
     return Container(
       alignment: Alignment.center,
       child: FutureBuilder(
