@@ -1,0 +1,84 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+# 蒲公英的apiKey与userKey
+api_key="2eb1b8349ccd12db401368427dfa5059"
+user_key="a5dabd67af043f363cfc29b890139266"
+
+platform :ios do
+
+  #开始之前先cocoapods
+  before_all do
+    #cocoapods
+  end
+
+  # desc "最简单的集成到蒲公英 注意app watch watch Extension的version与build号都有手动的进行调整"
+  # lane :pg do
+  #   build_app(export_method: "ad-hoc")
+  #   pgyer(api_key: api_key, user_key: user_key, update_description: "update by fastlane")
+  # end
+
+  desc "集成到蒲公英外网"
+  lane :pg do |options|
+
+    #完整的版本信息version+"_"+build
+    full_version = options[:version] + '_' + options[:build]
+
+    #scheme
+    scheme = "FlutterInProject"
+    
+    #更新说明
+    changelog = options[:changelog]
+    
+    #打包时间
+	  date = Time.new.strftime("%Y%m%d-%H%M")
+    
+    gym({
+      scheme: "#{scheme}",
+      #隐藏没有必要的文件
+      silent: true,
+      # 编译前执行 clean，可减少 ipa 文件大小
+      clean: true,
+      # 指定打包方式，Release 或者 Debug
+      configuration: "Debug",
+      # 指定打包所使用的输出方式，目前支持app-store, package, ad-hoc, enterprise, development
+      export_method: "development",
+      # 指定输出文件夹
+      output_directory:"./fastlane/build/pgyer",
+      #指定输出名称 这个地方使用scheme还是displayName随意
+      output_name: "#{scheme}_#{full_version}_#{date}.ipa",
+      # Xcode9将不会允许你访问钥匙串里的内容，除非设置allowProvisioningUpdates
+      export_xcargs: "-allowProvisioningUpdates",
+      # 使用自动管理证书就不需要进行证书的配置了
+    })
+
+    pgyer(api_key: "#{api_key}", user_key: "#{user_key}", password: "123456", install_type: "2", update_description: "#{changelog}")
+  end
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+
+    # slack(
+    #   message: "Successfully deployed new App Update."
+    # )
+  end
+
+  error do |lane, exception|
+    # slack(
+    #   message: exception.message,
+    #   success: false
+    # )
+  end
+end
