@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow()
         window?.frame = UIScreen.main.bounds
-        window?.rootViewController = flutterViewController
+        window?.rootViewController = flutterViewController//ViewController()
         window?.makeKeyAndVisible()
         flutterCallbackUseNativeMethod()
         return true
