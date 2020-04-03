@@ -11,63 +11,45 @@ import Flutter
 
 class ViewController: UIViewController {
 
-    lazy var counterLabel: UILabel = {
-        let label = UILabel()
-        label.frame = CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 20)
-        label.textColor = .black
-        label.textAlignment = .center
-        return label
-    }()
-    
     lazy var button: UIButton = {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 140, width: UIScreen.main.bounds.width, height: 20)
-        button.setTitle("按钮", for: .normal)
+        button.setTitle("原生界面跳转到Flutter的指定页面", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.addTarget(self, action: #selector(buttonWasTapped(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
         return button
     }()
 
-    var methodChannel : FlutterMethodChannel?
-    
-    var count = 0
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "测试"
         view.backgroundColor = .white
-        view.addSubview(counterLabel)
         view.addSubview(button)
-        
-        if let flutterEngine = (UIApplication.shared.delegate as? AppDelegate)?.flutterEngine {
-            methodChannel = FlutterMethodChannel(name: "dev.flutter.example/counter",
-                                                 binaryMessenger: flutterEngine.binaryMessenger)
-            methodChannel?.setMethodCallHandler({ [weak self]
-                (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
-                
-                if let strongSelf = self {
-                    switch(call.method) {
-                    case "incrementCounter":
-                        strongSelf.count += 1
-                        strongSelf.counterLabel.text = "Current counter: \(strongSelf.count)"
-                        strongSelf.reportCounter()
-                    case "requestCounter":
-                        strongSelf.reportCounter()
-                    default:
-                        // Unrecognized method name
-                        print("Unrecognized method name: \(call.method)")
-                    }
-                }
-            })
-        }
     }
-
-    func reportCounter() {
-        methodChannel?.invokeMethod("reportCounter", arguments: count)
-    }
-
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
+
     @objc
-    func buttonWasTapped(_ sender: Any) {
+    func buttonAction(_ button: UIButton) {
+        gotoFlutterControllerByMessage()
+    }
+    
+    /// 去Flutter的指定页面
+    private func gotoFlutterControllerByMessage() {
+        self.engine.navigationChannel.invokeMethod("setInitialRoute", arguments: "test")
+        self.reloadMessageChannel.sendMessage("test")
+        let flutterViewController = FlutterViewController(engine: self.engine, nibName: nil, bundle: nil)
+        self.navigationController?.pushViewController(flutterViewController, animated: true)
+    }
+    
+    /// 去Flutter的根控制器
+    private func gotoRootFlutterController() {
         if let flutterEngine = (UIApplication.shared.delegate as? AppDelegate)?.flutterEngine {
             let flutterViewController = FlutterViewController(engine: flutterEngine, nibName: nil, bundle: nil)
             flutterViewController.modalPresentationStyle = .fullScreen
@@ -76,3 +58,12 @@ class ViewController: UIViewController {
     }
 }
 
+extension UIViewController {
+    var engine: FlutterEngine {
+        return (UIApplication.shared.delegate! as! AppDelegate).flutterEngine
+    }
+        
+    var reloadMessageChannel: FlutterBasicMessageChannel {
+        return (UIApplication.shared.delegate! as! AppDelegate).reloadMessageChannel
+    }
+}

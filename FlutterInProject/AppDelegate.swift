@@ -10,15 +10,22 @@ import UIKit
 import Flutter
 import FlutterPluginRegistrant
 
+let _kReloadChannelName = "reload"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     var methodChannel : FlutterMethodChannel?
+    
+    lazy var lifeCycleDelegate = FlutterPluginAppLifeCycleDelegate()
+    
+    var  reloadMessageChannel : FlutterBasicMessageChannel!
 
     lazy var flutterEngine = FlutterEngine(name: "flutter.FlutterInProject")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         flutterEngine.run()
         GeneratedPluginRegistrant.register(with: flutterEngine)
         
@@ -26,12 +33,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow()
         window?.frame = UIScreen.main.bounds
-        window?.rootViewController = flutterViewController//ViewController()
+        window?.rootViewController = UINavigationController(rootViewController: ViewController())
         window?.makeKeyAndVisible()
+        
+        flutterRount()
+        
         flutterCallbackUseNativeMethod()
+        
         return true
     }
     
+    func flutterRount() {
+        //实现App 路由跳转
+        reloadMessageChannel = FlutterBasicMessageChannel(name: _kReloadChannelName, binaryMessenger: flutterEngine.binaryMessenger, codec: FlutterStringCodec.sharedInstance())
+        
+    }
+}
+
+//MARK: - 原生页面跳转跳转到指定Flutter页面
+extension AppDelegate: FlutterAppLifeCycleProvider {
+    func add(_ delegate: FlutterApplicationLifeCycleDelegate) {
+        lifeCycleDelegate.add(delegate)
+    }
+}
+
+//MARK: - Flutter调用原生方法
+extension AppDelegate {
     /// Flutter里的方法回调使用原生代码的方法
     func flutterCallbackUseNativeMethod() {
         let methodChannel = FlutterMethodChannel(name: "flutter.doubanmovie/buy",
