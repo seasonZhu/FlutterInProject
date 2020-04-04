@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter/DouBanMovie/MineView.dart';
 
 import 'MainView.dart';
 import 'CityView.dart';
@@ -15,6 +16,7 @@ class DouBanApp extends StatelessWidget {
       home: MainView(),
       routes: {
         '/Citys': (context) => CityView(),
+        '/Mine': (context) => MineView(),
       },
     );
   }

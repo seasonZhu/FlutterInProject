@@ -4,7 +4,7 @@ import 'dart:ui' as ui;
 
 import 'package:my_flutter/DouBanMovie/DouBanApp.dart';
 import 'package:my_flutter/MyApp/MyApp.dart';
-import 'MyApp/CupertinoNextPageView.dart';
+import 'package:my_flutter/CupertinoStoreApp/app.dart';
 
 //void main() => runApp(DouBanApp());
 
@@ -32,23 +32,26 @@ Future<String> run(String name) async{
   // not using a regular routes map.
   switch (name) {
     case "test":
-      runApp(AppRouter(title: "我是路由测试test",));
+      runApp(TestApp(title: "我是路由测试test",));
       break;
-    case "season":
-      runApp(AppRouter(title: "season",));
+    case "douban":
+      runApp(DouBanApp());
       break;
-    case "test2":
-      runApp(AppRouter(title: "我是路由测试test02",));
+    case "store":
+      runApp(cupertinoStoreApp());
+      break;
+    case "myApp":
+      runApp(MyApp());
       break;
     default:
-      runApp(MyApp());
+      runApp(DouBanApp());
       break;
   }
   return '';
 }
 
-class  AppRouter extends StatelessWidget {
-  AppRouter({this.title});
+class  TestApp extends StatelessWidget {
+  TestApp({this.title});
 
   final String title;
   // This widget is the root of your application.
