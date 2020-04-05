@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'HotMovieData.dart';
+//import 'HotMovieData.dart';
 import 'package:my_flutter/models/doubanSubject.dart';
 import 'package:my_flutter/models/doubanPersonInfo.dart';
 
@@ -26,10 +26,12 @@ class _HotMovieCellState extends State<HotMovieCell>
   var _buyState = false;
 
   @override
+  //@mustCallSuper
   bool get wantKeepAlive => true; //返回 true，表示不会被回收
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Container(
       height: 160,
       padding: EdgeInsets.all(20),
@@ -111,7 +113,7 @@ class _HotMovieCellState extends State<HotMovieCell>
 
       setState(() {
           _buyButtonTitle = message ? "已购" : "买一张嘛";
-        });
+      });
 
       setState(() {
         _buyState = message;

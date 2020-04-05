@@ -10,10 +10,9 @@ import 'package:my_flutter/CupertinoStoreApp/app.dart';
 
 const String _kReloadChannelName = 'reload';
 const BasicMessageChannel<String> _kReloadChannel =
-BasicMessageChannel<String>(_kReloadChannelName, StringCodec());
+    BasicMessageChannel<String>(_kReloadChannelName, StringCodec());
 
-
-void main(){
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   // Start listening immediately for messages from the iOS side. ObjC calls
   // will be made to let us know when we should be changing the app state.
@@ -22,8 +21,7 @@ void main(){
   run(ui.window.defaultRouteName);
 }
 
-
-Future<String> run(String name) async{
+Future<String> run(String name) async {
   // The platform-specific component will call [setInitialRoute] on the Flutter
   // view (or view controller for iOS) to set [ui.window.defaultRouteName].
   // We then dispatch based on the route names to show different Flutter
@@ -32,7 +30,9 @@ Future<String> run(String name) async{
   // not using a regular routes map.
   switch (name) {
     case "test":
-      runApp(TestApp(title: "我是路由测试test",));
+      runApp(TestApp(
+        title: "我是路由测试test",
+      ));
       break;
     case "douban":
       runApp(DouBanApp());
@@ -50,7 +50,12 @@ Future<String> run(String name) async{
   return '';
 }
 
-class  TestApp extends StatelessWidget {
+class TestApp extends StatelessWidget {
+  // 方法通道
+  static const popMethodChannel = const MethodChannel('flutter.pop');
+
+  static const pushMethodChannel = const MethodChannel('flutter.push');
+
   TestApp({this.title});
 
   final String title;
@@ -58,12 +63,53 @@ class  TestApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter rokid',
-      debugShowCheckedModeBanner: false,// 显示和隐藏
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(appBar: AppBar(title: Text("$title",)), body: Center(child: Text("Hello,world"),),)
-    );
+        title: 'Just Test',
+        debugShowCheckedModeBanner: false, // 显示和隐藏
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: Scaffold(
+            appBar: AppBar(
+              title: Text(
+                "$title",
+              ),
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+                onPressed: () {
+                  print("点击了返回按钮");
+                  _flutterCallbackPopMethod();
+                  //Navigator.pop(context);
+                },
+              ),
+            ),
+            body: GestureDetector(
+              child: Center(
+                child: Text("Hello,world"),
+              ),
+              onTap: () {
+                print("文字的点击事件");
+                _flutterCallbackPushMethod();
+              },
+            )));
+  }
+
+  Future<void> _flutterCallbackPopMethod() async {
+    try {
+      // 约定好返回参数的类型,便于进行交互
+      var _ = await popMethodChannel.invokeMethod('pop', null);
+    } on PlatformException catch (e) {
+      //抛出异常
+      print(e);
+    }
+  }
+
+  Future<void> _flutterCallbackPushMethod() async {
+    try {
+      // 约定好返回参数的类型,便于进行交互
+      var _ = await pushMethodChannel.invokeMethod('push', null);
+    } on PlatformException catch (e) {
+      //抛出异常
+      print(e);
+    }
   }
 }

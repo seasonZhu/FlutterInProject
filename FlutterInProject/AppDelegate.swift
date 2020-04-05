@@ -40,6 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         flutterCallbackUseNativeMethod()
         
+        flutterPopCallback()
+        
+        flutterPushCallback()
+        
         return true
     }
     
@@ -74,6 +78,33 @@ extension AppDelegate {
                 default:
                     print("Unrecognized method name: \(call.method)")
                 }
+            }
+        })
+    }
+    
+    func flutterPopCallback() {
+        let methodChannel = FlutterMethodChannel(name: "flutter.pop",
+                                                 binaryMessenger: flutterEngine.binaryMessenger)
+        
+        methodChannel.setMethodCallHandler({ [weak self]
+            (call: FlutterMethodCall, result: @escaping FlutterResult) in
+            
+            if let rootVC = self?.window?.rootViewController as? UINavigationController {
+                rootVC.popViewController(animated: true)
+            }
+        })
+    }
+    
+    func flutterPushCallback() {
+        
+        let methodChannel = FlutterMethodChannel(name: "flutter.push",
+                                                 binaryMessenger: flutterEngine.binaryMessenger)
+        
+        methodChannel.setMethodCallHandler({ [weak self]
+            (call: FlutterMethodCall, result: @escaping FlutterResult) in
+            
+            if let rootVC = self?.window?.rootViewController as? UINavigationController {
+                rootVC.topViewController?.navigationController?.pushViewController(ViewController(), animated: true)
             }
         })
     }
