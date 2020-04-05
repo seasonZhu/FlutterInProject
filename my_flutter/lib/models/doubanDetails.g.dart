@@ -8,11 +8,11 @@ part of 'doubanDetails.dart';
 
 DoubanDetails _$DoubanDetailsFromJson(Map<String, dynamic> json) {
   return DoubanDetails()
-    ..one = json['1'] as int
-    ..two = json['2'] as int
-    ..three = json['3'] as int
-    ..four = json['4'] as int
-    ..five = json['5'] as int;
+    ..one = (json['1'] as num)?.toDouble()
+    ..two = (json['2'] as num)?.toDouble()
+    ..three = (json['3'] as num)?.toDouble()
+    ..four = (json['4'] as num)?.toDouble()
+    ..five = (json['5'] as num)?.toDouble();
 }
 
 Map<String, dynamic> _$DoubanDetailsToJson(DoubanDetails instance) =>

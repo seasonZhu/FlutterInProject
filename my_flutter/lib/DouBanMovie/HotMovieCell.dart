@@ -16,7 +16,6 @@ class HotMovieCell extends StatefulWidget {
 
 class _HotMovieCellState extends State<HotMovieCell>
     with AutomaticKeepAliveClientMixin {
-  
   // 方法通道
   static const methodChannel = const MethodChannel('flutter.doubanmovie/buy');
 
@@ -62,8 +61,10 @@ class _HotMovieCellState extends State<HotMovieCell>
                   ),
                   Text('导演: ' + widget.subject.directors[0].name,
                       style: TextStyle(fontSize: 14, color: Colors.black54)),
-                  Text('主演: ' + getCasts(widget.subject.casts),
-                      style: TextStyle(fontSize: 14, color: Colors.black54)),
+                  Expanded(
+                    child: Text('主演: ' + getCasts(widget.subject.casts),
+                        style: TextStyle(fontSize: 14, color: Colors.black54)),
+                  ),
                 ],
               ),
             ),
@@ -108,17 +109,18 @@ class _HotMovieCellState extends State<HotMovieCell>
     try {
       // 约定好返回参数的类型,便于进行交互
       var result = await methodChannel.invokeMethod(
-                        'buyTicket', '购买 ' + widget.subject.title + ' 电影票一张');
+          'buyTicket', '购买 ' + widget.subject.title + ' 电影票一张');
       final bool message = result as bool;
 
       setState(() {
-          _buyButtonTitle = message ? "已购" : "买一张嘛";
+        _buyButtonTitle = message ? "已购" : "买一张嘛";
       });
 
       setState(() {
         _buyState = message;
       });
-    } on PlatformException catch (e) {//抛出异常
+    } on PlatformException catch (e) {
+      //抛出异常
       print(e);
     }
   }

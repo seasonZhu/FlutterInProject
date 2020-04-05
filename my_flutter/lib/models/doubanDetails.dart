@@ -6,11 +6,11 @@ part 'doubanDetails.g.dart';
 class DoubanDetails {
     DoubanDetails();
 
-    @JsonKey(name: '1') int one;
-    @JsonKey(name: '2') int two;
-    @JsonKey(name: '3') int three;
-    @JsonKey(name: '4') int four;
-    @JsonKey(name: '5') int five;
+    @JsonKey(name: '1') double one;
+    @JsonKey(name: '2') double two;
+    @JsonKey(name: '3') double three;
+    @JsonKey(name: '4') double four;
+    @JsonKey(name: '5') double five;
     
     factory DoubanDetails.fromJson(Map<String,dynamic> json) => _$DoubanDetailsFromJson(json);
     Map<String, dynamic> toJson() => _$DoubanDetailsToJson(this);

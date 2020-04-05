@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6131E27923CD4EEA00A1F076 /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6131E27823CD4EEA00A1F076 /* SwitchView.swift */; };
 		61F6EEB123C8662C00A197CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F6EEB023C8662C00A197CD /* AppDelegate.swift */; };
 		61F6EEB523C8662C00A197CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F6EEB423C8662C00A197CD /* ViewController.swift */; };
 		61F6EEB823C8662C00A197CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61F6EEB623C8662C00A197CD /* Main.storyboard */; };
@@ -18,7 +17,6 @@
 
 /* Begin PBXFileReference section */
 		2689CECD4DC31DC3F35500DD /* libPods-FlutterInProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlutterInProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6131E27823CD4EEA00A1F076 /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
 		61F6EEAD23C8662C00A197CD /* FlutterInProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlutterInProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F6EEB023C8662C00A197CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61F6EEB423C8662C00A197CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,7 +72,6 @@
 			children = (
 				61F6EEB023C8662C00A197CD /* AppDelegate.swift */,
 				61F6EEB423C8662C00A197CD /* ViewController.swift */,
-				6131E27823CD4EEA00A1F076 /* SwitchView.swift */,
 				61F6EEB623C8662C00A197CD /* Main.storyboard */,
 				61F6EEB923C8663600A197CD /* Assets.xcassets */,
 				61F6EEBB23C8663600A197CD /* LaunchScreen.storyboard */,
@@ -225,7 +222,6 @@
 			files = (
 				61F6EEB523C8662C00A197CD /* ViewController.swift in Sources */,
 				61F6EEB123C8662C00A197CD /* AppDelegate.swift in Sources */,
-				6131E27923CD4EEA00A1F076 /* SwitchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
