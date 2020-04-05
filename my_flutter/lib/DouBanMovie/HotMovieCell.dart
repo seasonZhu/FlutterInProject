@@ -32,10 +32,11 @@ class _HotMovieCellState extends State<HotMovieCell>
   Widget build(BuildContext context) {
     super.build(context);
     return Container(
-      height: 160,
+      constraints: BoxConstraints(minHeight: 160, maxHeight: 200),
       padding: EdgeInsets.all(20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Image.network(
             widget.subject.images.small,
