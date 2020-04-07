@@ -7,7 +7,7 @@ class DoubanPersonInfo {
     DoubanPersonInfo();
 
     Map<String,dynamic> avatars;
-    String name_en;
+    @JsonKey(name: 'name_en') String nameEn;
     String name;
     String alt;
     String id;

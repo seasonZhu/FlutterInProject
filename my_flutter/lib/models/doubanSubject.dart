@@ -13,10 +13,10 @@ class DoubanSubject {
     String title;
     List<DoubanPersonInfo> casts;
     List<String> durations;
-    num collect_count;
-    String mainland_pubdate;
-    bool has_video;
-    String original_title;
+    @JsonKey(name: 'collect_count') int collectCount;
+    @JsonKey(name: 'mainland_pubdate') String mainlandPubdate;
+    @JsonKey(name: 'has_video') bool hasVideo;
+    @JsonKey(name: 'original_title') String originalTitle;
     String subtype;
     List<DoubanPersonInfo> directors;
     List<String> pubdates;

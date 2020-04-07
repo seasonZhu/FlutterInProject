@@ -76,7 +76,7 @@ class _HotMovieCellState extends State<HotMovieCell>
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  widget.subject.collect_count.toString() + '人看过',
+                  widget.subject.collectCount.toString() + '人看过',
                   style: TextStyle(color: Colors.red, fontSize: 14),
                 ),
                 OutlineButton(

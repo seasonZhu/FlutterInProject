@@ -9,7 +9,7 @@ part of 'doubanPersonInfo.dart';
 DoubanPersonInfo _$DoubanPersonInfoFromJson(Map<String, dynamic> json) {
   return DoubanPersonInfo()
     ..avatars = json['avatars'] as Map<String, dynamic>
-    ..name_en = json['name_en'] as String
+    ..nameEn = json['name_en'] as String
     ..name = json['name'] as String
     ..alt = json['alt'] as String
     ..id = json['id'] as String;
@@ -18,7 +18,7 @@ DoubanPersonInfo _$DoubanPersonInfoFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$DoubanPersonInfoToJson(DoubanPersonInfo instance) =>
     <String, dynamic>{
       'avatars': instance.avatars,
-      'name_en': instance.name_en,
+      'name_en': instance.nameEn,
       'name': instance.name,
       'alt': instance.alt,
       'id': instance.id

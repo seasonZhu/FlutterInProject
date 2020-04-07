@@ -19,10 +19,10 @@ DoubanSubject _$DoubanSubjectFromJson(Map<String, dynamic> json) {
             : DoubanPersonInfo.fromJson(e as Map<String, dynamic>))
         ?.toList()
     ..durations = (json['durations'] as List)?.map((e) => e as String)?.toList()
-    ..collect_count = json['collect_count'] as num
-    ..mainland_pubdate = json['mainland_pubdate'] as String
-    ..has_video = json['has_video'] as bool
-    ..original_title = json['original_title'] as String
+    ..collectCount = json['collect_count'] as int
+    ..mainlandPubdate = json['mainland_pubdate'] as String
+    ..hasVideo = json['has_video'] as bool
+    ..originalTitle = json['original_title'] as String
     ..subtype = json['subtype'] as String
     ..directors = (json['directors'] as List)
         ?.map((e) => e == null
@@ -45,10 +45,10 @@ Map<String, dynamic> _$DoubanSubjectToJson(DoubanSubject instance) =>
       'title': instance.title,
       'casts': instance.casts,
       'durations': instance.durations,
-      'collect_count': instance.collect_count,
-      'mainland_pubdate': instance.mainland_pubdate,
-      'has_video': instance.has_video,
-      'original_title': instance.original_title,
+      'collect_count': instance.collectCount,
+      'mainland_pubdate': instance.mainlandPubdate,
+      'has_video': instance.hasVideo,
+      'original_title': instance.originalTitle,
       'subtype': instance.subtype,
       'directors': instance.directors,
       'pubdates': instance.pubdates,
