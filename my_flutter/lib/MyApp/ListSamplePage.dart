@@ -120,6 +120,7 @@ class _ListSamplePageState extends State<ListSamplePage> {
             print("滚动到边界");
             break;
         }
+        return true;
       },
       child: ListView.builder(
           itemCount: 100,

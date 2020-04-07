@@ -62,6 +62,8 @@ class CupertinoStoreHomePage extends StatelessWidget {
                 child: ShoppingCartTab(),
               );
             });
+          default:
+            return null;
         }
       },
     );
