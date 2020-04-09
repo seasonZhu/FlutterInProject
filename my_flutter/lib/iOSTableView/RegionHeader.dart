@@ -19,7 +19,7 @@ class RegionHeader extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(left: 12.0, right: 12.0),
                 child: Image.asset(
-                  'images/location.png',
+                  'images/avatar.jpg',
                   width: 32,
                   height: 32,
                 ),
@@ -31,9 +31,20 @@ class RegionHeader extends StatelessWidget {
                 children: <Widget>[
                   Text(title),
                 ],
-              )),
-            ],
-          ),
-        ));
+              )
+            ),
+            Expanded(
+                  child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text("tableView的HeaderView"),
+                ],
+              )
+            ),
+          ],
+        ),
+      )
+    );
   }
 }

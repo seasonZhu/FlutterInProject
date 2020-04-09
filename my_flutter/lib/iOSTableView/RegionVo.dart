@@ -8,51 +8,51 @@ class RegionVo {
 }
 
 List<RegionVo> regionDataSource = [
-  new RegionVo(
+  RegionVo(
       sectionKey: 'A',
       name: '阿拉善',
     ),
-  new RegionVo(
+  RegionVo(
       sectionKey: 'A',
       name: '安庆市',
     ),
-  new RegionVo(
+  RegionVo(
       sectionKey: 'A',
       name: '安阳市',
     ),
-  new RegionVo(
+  RegionVo(
       sectionKey: 'B',
       name: '北京',
     ),  
-  new RegionVo(
+  RegionVo(
       sectionKey: 'B',
       name: '包头市',
     ),
-  new RegionVo(
+  RegionVo(
       sectionKey: 'C',
       name: '承德市',
     ),
-    new RegionVo(
+    RegionVo(
       sectionKey: 'C',
       name: '沧州市',
     ),
-  new RegionVo(
+  RegionVo(
       sectionKey: 'C',
       name: '池州',
     ),
-    new RegionVo(
+    RegionVo(
       sectionKey: 'C',
       name: '长阳',
     ),
-  new RegionVo(
+  RegionVo(
       sectionKey: 'D',
       name: '德州',
     ),
-    new RegionVo(
+    RegionVo(
       sectionKey: 'D',
       name: '达州',
     ),
-  new RegionVo(
+  RegionVo(
       sectionKey: 'D',
       name: '定西市',
     ),

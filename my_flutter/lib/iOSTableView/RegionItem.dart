@@ -17,7 +17,9 @@ class RegionItem extends StatelessWidget {
               Border(bottom: BorderSide(width: 0.5, color: Color(0xFFd9d9d9)))),
       height: 52.0,
       child: FlatButton(
-        onPressed: () {},
+        onPressed: () {
+          
+        },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
