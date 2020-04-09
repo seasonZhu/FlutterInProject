@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 
-class RegionHeader extends StatelessWidget {
+class RegionHeader extends StatefulWidget {
+
   final String title;
   RegionHeader({Key key, @required this.title});
+  
+  @override
+  _RegionHeaderState createState() => _RegionHeaderState();
+}
 
+class _RegionHeaderState extends State<RegionHeader>  {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +35,7 @@ class RegionHeader extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(title),
+                  Text(widget.title),
                 ],
               )
             ),

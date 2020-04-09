@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter/main.dart';
 
 import 'Regions.dart';
 import 'RegionList.dart';
@@ -8,7 +7,7 @@ import 'RegionItem.dart';
 import 'RegionHeader.dart';
 
 class RegionTableView extends StatefulWidget {
-  var items = regionDataSource;
+  final items = regionDataSource;
 
   @override
   _RegionTableViewtate createState() => _RegionTableViewtate();
@@ -57,6 +56,7 @@ class _RegionTableViewtate extends State<RegionTableView> {
 
               setState(() {
                 _content = value;
+                print(_content);
               });
             },
             child: Icon(Icons.add_circle),
@@ -81,18 +81,16 @@ class _RegionTableViewtate extends State<RegionTableView> {
   }
 
   Widget mainView({BuildContext context}) {
-    return Stack(
-      children: <Widget>[
-        listView(context), 
-        indexView(context)
-      ],
+    return SafeArea(
+      child: Stack(
+        children: <Widget>[listView(context), indexView(context)],
+      ),
     );
   }
 
   Widget indexView(BuildContext context) {
     return Positioned(
-      top: MediaQuery.
-      of(context).size.height * 0.25,
+      top: MediaQuery.of(context).size.height * 0.25,
       right: 0.0,
       child: Container(
         alignment: Alignment.center,
