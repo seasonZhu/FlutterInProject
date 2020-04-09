@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:my_flutter/MyApp/SectionList.dart';
+import 'package:my_flutter/iOSTableView/RegionTableView.dart';
 
 class MovieView extends StatefulWidget {
   @override
@@ -21,7 +22,7 @@ class _MovieViewState extends State<MovieView> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => MinList(),
+                builder: (context) => RegionTableView(),
               ),
             );
           },
