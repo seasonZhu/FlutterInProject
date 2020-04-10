@@ -64,6 +64,7 @@ class _CityViewState extends State<CityView> {
                       children: <Widget>[
                         Container(
                           height: 50,
+                          // 在模拟器上面使用输入框直接崩溃了,我自己的真机目前跑不了这个dart包,只能跑外嵌的工程,没有问题,还需要继续跟踪
                           child: TextField(
                             cursorColor: Colors.green,
                             decoration: InputDecoration(

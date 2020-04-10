@@ -7,22 +7,27 @@ class MyCustomScrollView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar:
-            AppBar(title: Text('Flutter 可滚动Widget '), leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.white),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          )),
-        body: CustomScrollView(
+      appBar: AppBar(
+        title: Text('Flutter 可滚动Widget '),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        )
+      ),
+      body: MediaQuery.removePadding(
+        removeTop: true,
+        context: context,
+        child: CustomScrollView(
           slivers: <Widget>[
             const SliverAppBar(
               leading: null,
               automaticallyImplyLeading: false,
               pinned: true,
-              expandedHeight: 250.0,
+              expandedHeight: 250,
               flexibleSpace: FlexibleSpaceBar(
-                title: Text('Grid View'),
+                title: Text('1st Grid View'),
               ),
             ),
             SliverGrid(
@@ -63,8 +68,9 @@ class MyCustomScrollView extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      );
+        )
+      ),
+    );
   }
 
   void goback({BuildContext context}) {
@@ -72,6 +78,9 @@ class MyCustomScrollView extends StatelessWidget {
   }
 
   Widget back({BuildContext context}) {
-    return GestureDetector(child: Icon(Icons.arrow_back, color: Colors.white), onTap: () => Navigator.pop(context),);
+    return GestureDetector(
+      child: Icon(Icons.arrow_back, color: Colors.white),
+      onTap: () => Navigator.pop(context),
+    );
   }
 }
