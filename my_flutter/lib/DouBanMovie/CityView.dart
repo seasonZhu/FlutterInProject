@@ -39,7 +39,7 @@ class _CityViewState extends State<CityView> {
         ),
         backgroundColor: Colors.white,
         elevation: 1,
-        centerTitle: false,
+        centerTitle: true,
       ),
       body: DefaultTabController(
         length: 2,

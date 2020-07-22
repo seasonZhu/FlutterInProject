@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
 
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+//import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 import 'package:my_flutter/CupertinoStoreApp/app.dart';
 
@@ -179,14 +179,14 @@ class _MyHomePageState extends State<MyHomePage> {
             FlatButton(
               child: Text("Date Pike"),
               onPressed: () {
-                DatePicker.showDatePicker(context,
-                    showTitleActions: true,
-                    minTime: DateTime.now(),
-                    maxTime: DateTime(2100, 12, 31), onChanged: (date) {
-                  print('change $date');
-                }, onConfirm: (date) {
-                  print('confirm $date');
-                }, currentTime: DateTime.now(), locale: LocaleType.zh);
+                // DatePicker.showDatePicker(context,
+                //     showTitleActions: true,
+                //     minTime: DateTime.now(),
+                //     maxTime: DateTime(2100, 12, 31), onChanged: (date) {
+                //   print('change $date');
+                // }, onConfirm: (date) {
+                //   print('confirm $date');
+                // }, currentTime: DateTime.now(), locale: LocaleType.zh);
               },
             ),
           ],

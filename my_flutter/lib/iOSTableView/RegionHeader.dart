@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
 class RegionHeader extends StatefulWidget {
-
   final String title;
   RegionHeader({Key key, @required this.title});
-  
+
   @override
   _RegionHeaderState createState() => _RegionHeaderState();
 }
 
-class _RegionHeaderState extends State<RegionHeader>  {
+class _RegionHeaderState extends State<RegionHeader> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,20 +36,17 @@ class _RegionHeaderState extends State<RegionHeader>  {
                 children: <Widget>[
                   Text(widget.title),
                 ],
-              )
-            ),
-            Expanded(
+              )),
+              Expanded(
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text("tableView的HeaderView"),
                 ],
-              )
-            ),
-          ],
-        ),
-      )
-    );
+              )),
+            ],
+          ),
+        ));
   }
 }

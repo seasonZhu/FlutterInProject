@@ -44,7 +44,7 @@ Future<String> run(String name) async {
       runApp(MyApp());
       break;
     default:
-      runApp(MyApp());
+      runApp(DouBanApp());
       break;
   }
   return '';

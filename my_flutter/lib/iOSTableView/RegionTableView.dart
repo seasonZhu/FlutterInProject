@@ -50,12 +50,12 @@ class _RegionTableViewtate extends State<RegionTableView> {
                       value: 'value03', child: Text('Item Three')),
                   PopupMenuDivider(height: 1.0),
                   PopupMenuItem<String>(
-                      value: 'value04', child: Text('I am Item Four'))
+                      value: 'value04', child: Text('Item Four'))
                 ],
               );
 
               setState(() {
-                _content = value;
+                _content = value ?? "";
                 print(_content);
               });
             },
